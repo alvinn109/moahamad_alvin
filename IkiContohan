@@ -1,0 +1,18 @@
+public void Dataproduk() {
+        try {
+            st = cn.createStatement();
+            rs = st.executeQuery("SELECT * FROM produk");
+            
+            ID.removeAllItems();
+            NAMA.removeAllItems();
+            HARGA.removeAllItems();
+
+            while (rs.next()) {
+                ID.addItem(rs.getString("id_produk"));
+                NAMA.addItem(rs.getString("nama_produk"));
+                HARGA.addItem(rs.getString("harga_produk"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
