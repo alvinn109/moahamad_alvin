@@ -16,3 +16,23 @@ public void Dataproduk() {
             e.printStackTrace();
         }
     }
+
+
+private void ambilDataProduk(String column, String value) {
+        try {
+            String sql = "SELECT * FROM produk WHERE " + column + " = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, value);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                ID.setSelectedItem(rs.getString("id_produk"));
+                NAMA.setSelectedItem(rs.getString("nama_produk"));
+                HARGA.setSelectedItem(rs.getString("harga_produk"));
+                STOK.setText(rs.getString("stok_produk"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
